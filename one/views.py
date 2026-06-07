@@ -28,6 +28,7 @@ class hotelapi(APIView):
 
 
 class hoteldetailed(APIView):
+    pass
     
 
 
