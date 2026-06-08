@@ -38,7 +38,7 @@ class hoteldetailed(APIView):
     
     def put(self,request,pk):
 
-        hotel=hotel.objects.get(id=pk)
+        hotel=Hotel.objects.get(id=pk)
 
         serializer=Hotelserializer(hotel,data=request.data)
 
@@ -57,9 +57,21 @@ class hoteldetailed(APIView):
     
  
 
+class Foodapiview(APIView):
 
-
+    def get (self,request, pk=None):
+        if pk:
+            food=Food.objects.get(id=pk)
+            serializer=Foodserializer(food)
+            return Response(serializer.data)
+        food=Food.objects.all()
+        serializer=Foodserializer(food,many=True)
+        return Response(serializer.data)
+    
+    def post(self,request):
         pass
+
+    
     
     
 
