@@ -69,7 +69,27 @@ class Foodapiview(APIView):
         return Response(serializer.data)
     
     def post(self,request):
-        pass
+
+        serializer=Foodserializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+    
+
+    def put(self,request,pk):
+        food=Food.objects.get(id=pk)
+        serializer=Foodserializer(food,data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+    
+    def delete(self,request,pk):
+        data=Food.objects.get(id=pk)
+        data.delete()
+        return Response({"msg":"foood deleted"})
+
 
     
     
