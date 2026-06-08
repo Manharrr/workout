@@ -1,8 +1,11 @@
 from django.urls import path
-from . import views
+from . models import Food,Hotel
+
+from .views import hotelapi,hoteldetailed
 
 
 urlpatterns = [
-    # path('', views.product_list),
-    # path('<int:id>/', views.product_detail),
+    path('hotel/',hotelapi.as_view()),
+    path('hotel/<int:pk>/',hoteldetailed.as_view()),
+    
 ]
