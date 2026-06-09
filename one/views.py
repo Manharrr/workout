@@ -91,15 +91,5 @@ class Foodapiview(APIView):
         return Response({"msg":"foood deleted"})
 
 
-    
-    
-    
-
-
-
-
-
-
-
-
-
+    def one():
+        pass
