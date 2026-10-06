@@ -54,8 +54,3 @@ class Foodapiview(APIView):
             food=Food.objects.all()
             serializer=foodserializer(food,many=True)
         return Response(serializer.data)
-
-
-class b():
-    pass
-class 
